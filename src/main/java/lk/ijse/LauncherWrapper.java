@@ -4,6 +4,6 @@ package lk.ijse;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class LauncherWrapper {
     public static void main(String[] args) {
-
+        launcher.main(args);
     }
 }
