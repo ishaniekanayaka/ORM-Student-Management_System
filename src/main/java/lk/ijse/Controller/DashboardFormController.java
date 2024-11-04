@@ -35,7 +35,13 @@ public class DashboardFormController implements Initializable {
 
     @FXML
     void btnProgrammeOnAction(ActionEvent event) {
-
+        AnchorPane anchorPane = null;
+        try {
+            anchorPane = FXMLLoader.load(getClass().getResource("/view/Programme_form.fxml"));
+            loadWindow(anchorPane);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
