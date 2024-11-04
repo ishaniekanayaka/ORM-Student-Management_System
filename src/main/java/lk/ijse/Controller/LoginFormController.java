@@ -34,8 +34,12 @@ public class LoginFormController {
     private TextField txtUserName;
 
     @FXML
-    void btnLoginOnAction(ActionEvent event) {
-
+    void btnLoginOnAction(ActionEvent event) throws IOException {
+        Stage stage = (Stage) root.getScene().getWindow();
+        stage.setScene(new Scene(FXMLLoader.load(this.getClass().getResource("/View/dashboard_form.fxml"))));
+        stage.setTitle("DashBoard ");
+        stage.centerOnScreen();
+        stage.show();
     }
 
     @FXML

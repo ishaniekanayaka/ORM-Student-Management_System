@@ -20,14 +20,6 @@
             <Image url="@../icon/img_5.png" />
          </image>
       </ImageView>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#5b300a" height="586.0" layoutX="33.0" layoutY="20.0" opacity="0.31" stroke="BLACK" strokeType="INSIDE" width="485.0">
-         <effect>
-            <InnerShadow choke="0.23" height="218.69" radius="101.5325" width="189.44">
-               <color>
-                  <Color red="1.0" green="0.9888888597488403" blue="0.9888888597488403" />
-               </color>
-            </InnerShadow>
-         </effect></Rectangle>
       <ImageView fitHeight="157.0" fitWidth="159.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../icon/img_4.png" />
@@ -38,6 +30,15 @@
             <Image url="@../icon/img_3.png" />
          </image>
       </ImageView>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#5b300a" height="586.0" layoutX="33.0" layoutY="20.0" opacity="0.31" stroke="BLACK" strokeType="INSIDE" width="485.0">
+         <effect>
+            <InnerShadow choke="0.23" height="218.69" radius="101.5325" width="189.44">
+               <color>
+                  <Color red="1.0" green="0.9888888597488403" blue="0.9888888597488403" />
+               </color>
+            </InnerShadow>
+         </effect>
+      </Rectangle>
       <Label layoutX="173.0" layoutY="57.0" prefHeight="58.0" prefWidth="239.0" text="Register" textFill="#160952">
          <font>
             <Font name="Segoe Print Bold" size="46.0" />
@@ -63,7 +64,7 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <JFXButton fx:id="btnRegister" layoutX="220.0" layoutY="548.0" onAction="#btnRegisterOnAction" prefHeight="40.0" prefWidth="145.0" style="-fx-background-color: #09520d;" text="Register" textFill="WHITE">
+      <JFXButton fx:id="btnRegister" layoutX="220.0" layoutY="548.0" onAction="#btnRegisterOnAction" prefHeight="40.0" prefWidth="128.0" style="-fx-background-color: #09520d; -fx-background-radius: 15px;" text="Register" textFill="WHITE">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
@@ -74,9 +75,9 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </JFXButton>
-      <TextField fx:id="txtUserName" layoutX="86.0" layoutY="206.0" onAction="#txtUserNameOnAction" prefHeight="38.0" prefWidth="282.0" promptText="user name" />
-      <TextField fx:id="txtPassword" layoutX="86.0" layoutY="284.0" onAction="#txtPasswordOnAction" prefHeight="38.0" prefWidth="282.0" promptText="password" />
-      <TextField fx:id="txtRePassword" layoutX="86.0" layoutY="359.0" onAction="#txtRePasswordOnAction" prefHeight="38.0" prefWidth="282.0" promptText="re-enter password" />
-      <TextField fx:id="txtPasswordHint" layoutX="86.0" layoutY="437.0" onAction="#txtPasswordHintOnAction" prefHeight="38.0" prefWidth="282.0" promptText="password hint" />
+      <TextField fx:id="txtUserName" layoutX="86.0" layoutY="206.0" onAction="#txtUserNameOnAction" prefHeight="38.0" prefWidth="282.0" promptText="user name" style="-fx-background-radius: 10px;" />
+      <TextField fx:id="txtPassword" layoutX="86.0" layoutY="284.0" onAction="#txtPasswordOnAction" prefHeight="38.0" prefWidth="282.0" promptText="password" style="-fx-background-radius: 10px;" />
+      <TextField fx:id="txtRePassword" layoutX="86.0" layoutY="359.0" onAction="#txtRePasswordOnAction" prefHeight="38.0" prefWidth="282.0" promptText="re-enter password" style="-fx-background-radius: 10px;" />
+      <TextField fx:id="txtPasswordHint" layoutX="86.0" layoutY="437.0" onAction="#txtPasswordHintOnAction" prefHeight="38.0" prefWidth="282.0" promptText="password hint" style="-fx-background-radius: 10px;" />
    </children>
 </AnchorPane>
