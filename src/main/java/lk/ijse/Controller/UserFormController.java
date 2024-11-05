@@ -3,13 +3,18 @@ package lk.ijse.Controller;
 import com.jfoenix.controls.JFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.fxml.Initializable;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.DTO.UserDTO;
+import lk.ijse.bo.BOFactory;
+import lk.ijse.bo.custom.UserBO;
 
-public class UserFormController {
+import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class UserFormController implements Initializable {
 
     @FXML
     private TableView<?> UserTable;
@@ -27,7 +32,7 @@ public class UserFormController {
     private JFXButton btnUpdate;
 
     @FXML
-    private ComboBox<?> cmbType;
+    private ComboBox<String> cmbType;
 
     @FXML
     private TableColumn<?, ?> colUserName;
@@ -53,6 +58,8 @@ public class UserFormController {
     @FXML
     private TextField txtPassword;
 
+    UserBO userBO = (UserBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.USER);
+
     @FXML
     void btnClearOnAction(ActionEvent event) {
 
@@ -64,8 +71,22 @@ public class UserFormController {
     }
 
     @FXML
-    void btnSaveOnAction(ActionEvent event) {
+    void btnSaveOnAction(ActionEvent event) throws IOException {
+        String userId = txtId.getText();
+        String userName = txtName.getText();
+        String userPassword = txtPassword.getText();
+        String userRole = cmbType.getSelectionModel().getSelectedItem();
 
+        UserDTO userDTO = new UserDTO(userId, userName, userPassword, userRole);
+
+        boolean isSaved = userBO.saveUser(userDTO);
+        if (isSaved) {
+            new Alert(Alert.AlertType.INFORMATION, "User is Saved Successfully").show();
+
+        } else {
+            new Alert(Alert.AlertType.INFORMATION, "User is Saved UnSuccessfully").show();
+
+        }
     }
 
     @FXML
@@ -73,4 +94,28 @@ public class UserFormController {
 
     }
 
+    private void setRoleType() {
+        String[] gender = {null, "Admin", "Coordinator" };
+        cmbType.getItems().addAll(gender);
+    }
+
+    private void setUserID() {
+        String userId = userBO.generateNewUserID();
+
+        if (userId == null) {
+            txtId.setText("U000001");
+        } else {
+            String[] split = userId.split("[U]");
+            int lastDigits = Integer.parseInt(split[1]);
+            lastDigits++;
+            String newID = String.format("U%06d", lastDigits);
+            txtId.setText(newID);
+        }
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        setUserID();
+        setRoleType();
+    }
 }
